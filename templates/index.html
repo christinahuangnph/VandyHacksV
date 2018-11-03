@@ -7,7 +7,7 @@
 
     <title>Solid Ground</title>
 
-    <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
@@ -17,54 +17,65 @@
 <body>
     <!--Change logo image-->
     <img src="/static/placeholder.jpg" alt="Solid Ground" width="15" height="15">
-    <a href="/">
-        <img src="/static/logo-placeholder.png" alt="Logo" width="70" height="20">
-    </a>
 
-    <!--Emergency Contact-->
-    <button class="buttonSm" id= "small" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set
-        Up</button>
-    <div style="display:none" id="ecForm" class="modal">
-        <!--send data somewhere-->
-        <form name="contactForm" action="" method="post" class="modal-content animate" onsubmit="return validateForm()">
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('ecForm').style.display='none'" class="close" title="Close Modal">&times;</span>
-            </div>
-
-            <div class="container">
-                <label for="emcontname"><b>Emergency Contact Name:</b></label>
-                <input type="text" placeholder="Enter A Contact Name" name="cname" required>
-            </div>
-
-            <div class="container">
-                <label for="phnum"><b>Phone Number:</b></label>
-                <input type="text" id="phnum" placeholder="Enter A Phone Number" name="phnum" required>
-            </div>
-            <p id="response"></p> <br>
-
-            <button type="submit" id="submit-btn">Submit</button>
-
-        </form>
+    <div class="tab">
+        <button class="tablinks" onmouseover="openCity(event, 'Home')">Home</button>
+        <button class="tablinks" onmouseover="openCity(event, 'Music')">Music</button>
+        <button class="tablinks" onmouseover="openCity(event, 'Set Up')">Set Up</button>
     </div>
-    <!--End Emergency Contact-->
 
-    <!--Buttons-->
-    <div id="center-table">
-        <div class="table-contents">
-            <div class="table-row">
-                <!--Add action-->
-                <button class="buttonBig" id="anchor" onclick="startExercise()">START</button>
+    <div id="Home" class="tabcontent">
+        <!--Buttons-->
+        <div id="center-table">
+            <div class="table-contents">
+                <div class="table-row">
+                    <!--Add action-->
+                    <button class="buttonBig" id="anchor" onclick="startExercise()">START</button>
+                </div>
+                <!--Separation-->
+                <div><p><br></p></div>
+                <div class="table-row">
+                    <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
+                    <div style="width: 40px"></div>
+                    <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
+                </div>
             </div>
-            <!--Separation-->
-            <div><p><br></p></div>
-            <div class="table-row">
-                <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
-                <div style="width: 40px"></div>
-                <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
-            </div>
+    </div>
+
+    <div id="Music" class="tabcontent">
+         <iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DWUZ5bk6qqDSy" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+    </div>
+
+    <div id="Set Up" class="tabcontent" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">
+        <!--Emergency Contact-->
+        <div style="display:none" id='ecForm' class="modal">
+            <!--send data somewhere-->
+            <form name="contactForm" action="" method="post" class="modal-content animate" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('ecForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+
+                <div class="container">
+                    <label for="emcontname"><b>Emergency Contact Name:</b></label>
+                    <input type="text" placeholder="Enter A Contact Name" name="cname" required>
+                </div>
+
+                <div class="container">
+                    <label for="phnum"><b>Phone Number:</b></label>
+                    <input type="text" id="phnum" placeholder="Enter A Phone Number" name="phnum" required>
+                </div>
+                <p id="response"></p> <br>
+
+                <button type="submit" id="submit-btn">Submit</button>
+
+            </form>
+
         </div>
+
+        <!--End Emergency Contact-->
     </div>
-    <!--End Buttons-->
+
 
     <script>
 
@@ -95,6 +106,7 @@
             }
         }
         /* End Contact Form */
+
         function startExercise() {
             playFile("/static/navigation/audiofiles/testing.wav");
 
@@ -117,14 +129,21 @@
                 '<source src="' + file_path + '" type="audio/mp3">';
             console.log(x);
             x.play();
-
         }
-        /* End Audio Playback */
+
+
+        /* Hide Start Button */
+        function hide() {
+            let x = document.getElementById("anchor");
+            x.style.opacity = "0";
+            x.style.pointerEvents = "none";
+        }
+        /* End Hide Start Button */
 
     </script>
 
-<div id="app"></div>
-<script type="text/babel">
+    <div id="app"></div>
+    <script type="text/babel">
     function circleWithText(text, bgColor, scale) {
         let circleStyle = {
             width: 200,
@@ -173,8 +192,6 @@
 
         frameCount += 1;
     }
-
-    startAnimationLoop(1);
 </script>
 
 </body>
