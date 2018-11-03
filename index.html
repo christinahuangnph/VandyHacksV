@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Solid Ground</title>
+
+    <style>
+
+        /* Button Style Rules */
+    button {
+        border-radius: 10px;
+        text-align: center;
+        border: 3px solid #4CAF50;
+        background-color: white;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s; /* All other browsers */
+        cursor: pointer;
+    }
+
+    #table-button {
+        width:60%; 
+        margin-left:20%; 
+        margin-right:20%;
+    } 
+
+    tr {
+        height: 50px;
+        text-align: center;
+    }
+
+    button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    }   
+
+    /* Button Style 1 - Large Button*/
+    .buttonBig {
+        font-size: 100px;
+        padding: 72px 64px;
+    }
+
+    /* Button Style 2 - Medium Buttons*/
+    .buttonMed {
+        font-size: 20px;
+        padding: 32px 16px;
+        max-width: 150px;
+    }
+
+    /* Button Style 3 - Small Button*/
+    .buttonSm {
+        font-size: 10px;
+        padding: 10px 20px;
+        position:fixed;
+        right:0%;
+    }
+
+  </style>
+
+    <script></script>
+
+</head>
+
+<body>
+    <!--Change logo image-->
+    <img src="placeholder.jpg" alt="Solid Ground" width="15" height="15">
+
+    <!--Emergency Contact Set Up-->
+    <button class="buttonSm" onclick="ecform()">Set Up</button>
+
+    <!--Buttons-->
+    <table id="button-table">
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    <!--Start Button-->
+                    <button class="buttonBig" id="anchor" onclick="beginSeq()">START</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <!--Call Emergency Contact-->
+                    <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
+                </td>
+                <td></td>
+                <td>
+                    <!--Call Hotline-->
+                    <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--End Buttons-->
+
+    <!--Emergency Contact Form-->
+    <div style="display:none">
+        <!--send data somewhere-->
+        <form action="" method="post">
+            Emergency Contact Name: <br>
+            <input type="text" name="name"><br>
+
+            Phone Number: <br>
+            <input type="text"> <br>
+
+            <input type="submit" value="Submit">
+
+        </form>
+    </div>
+    <!--End Emergency Contact Form-->
+</body>
+
+</html>
