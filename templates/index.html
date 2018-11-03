@@ -7,51 +7,6 @@
 
     <link rel="stylesheet" type="text/css" href="styles.css" />
 
-    <script>
-
-        /* Contact Form */
-        //Display Modal
-        var modal = document.getElementById('ecForm');
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        
-        //validate phone number response
-        function validateForm() {
-
-            // Get the value of the input field with id="numb"
-            var x = document.getElementById("phnum").value;
-
-            var text = "";
-            // If x is Not a Number or less than one or greater than 10
-            if (isNaN(x) || x.length != 10) {
-                text = "Not a valid phone number";
-                document.getElementById("response").innerHTML = text;
-                return false;
-            } else {
-                return true;
-            }
-        }
-        /* End Contact Form */
-
-        /* Audio Playback */
-        //Audio Controls
-        function playFile() {
-            //choose a sequence to play
-            var x = document.getElementById("testing");
-            if (x.paused()) {
-                x.play();
-            } else {
-                x.pause();
-            }
-        }
-    /* End Audio Playback */
-
-    </script>
-
 </head>
 
 <body>
@@ -62,7 +17,7 @@
     </a>
 
     <!--Emergency Contact-->
-    <button class="buttonSm" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set
+    <button class="buttonSm" id= "small" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set
         Up</button>
     <div style="display:none" id="ecForm" class="modal">
         <!--send data somewhere-->
@@ -89,28 +44,20 @@
     <!--End Emergency Contact-->
 
     <!--Buttons-->
-    <table id="button-table">
-        <tbody>
-            <tr>
-                <td></td>
-                <td>
-                    <!--Start Button-->
-                    <button class="buttonBig" id="anchor" onclick="playFile()">START</button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <!--Call Emergency Contact-->
-                    <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
-                </td>
-                <td></td>
-                <td>
-                    <!--Call Hotline-->
-                    <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    <div id="center-table">
+        <div class="table-contents">
+            <div class="table-row">
+                <button class="buttonBig" id="anchor" onclick="playFile()">START</button>
+            </div>
+            <!--Separation-->
+            <div><p><br></p></div>
+            <div class="table-row">
+                <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
+                <div style="width: 40px"></div>
+                <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
+            </div>
+        </div>
+    </div>
     <!--End Buttons-->
 
     <!--Audio-->
@@ -119,6 +66,50 @@
     </audio>
     <!--End Audio-->
 
+    <script>
+
+        /* Contact Form */
+        //Display Modal
+        let modal = document.getElementById('ecForm');
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        //validate phone number response
+        function validateForm() {
+
+            // Get the value of the input field with id="numb"
+            let x = document.getElementById("phnum").value;
+
+            let text = "";
+            // If x is Not a Number or less than one or greater than 10
+            if (isNaN(x) || x.length != 10) {
+                text = "Not a valid phone number";
+                document.getElementById("response").innerHTML = text;
+                return false;
+            } else {
+                return true;
+            }
+        }
+        /* End Contact Form */
+
+        /* Audio Playback */
+        //Audio Controls
+        function playFile() {
+            //choose a sequence to play
+            let x = document.getElementById("testing");
+            if (x.paused()) {
+                x.play();
+            } else {
+                x.pause();
+            }
+        }
+        /* End Audio Playback */
+
+    </script>
 
 </body>
 
