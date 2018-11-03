@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     {% load static %}
     <meta charset="UTF-8">
 
@@ -67,12 +66,6 @@
     </div>
     <!--End Buttons-->
 
-    <!--Audio-->
-    <audio id="testing">
-        <source src="/static/navigation/audiofiles/testing.wav" type="audio/wav">
-    </audio>
-    <!--End Audio-->
-
     <script>
 
         /* Contact Form */
@@ -103,7 +96,8 @@
         }
         /* End Contact Form */
         function startExercise() {
-            playFile("testing")
+            playFile("/static/navigation/audiofiles/testing.wav");
+
             fetch('/',
                 {method:'post',
                 headers: {
@@ -118,12 +112,11 @@
         //Audio Controls
         function playFile(file_path) {
             //choose a sequence to play
-            let x = document.getElementById(file_path);
-            if (x.paused) {
-                x.play();
-            } else {
-                x.pause();
-            }
+            let x = document.createElement("Audio");
+            x.innerHTML =
+                '<source src="' + file_path + '" type="audio/mp3">';
+            console.log(x);
+            x.play();
 
         }
         /* End Audio Playback */
