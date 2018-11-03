@@ -6,7 +6,8 @@ html {
 
 body {
     background-image:url("background.gif");
-    background-size:100%;
+    background-size:cover;
+    background-position: center center;
     background-color: rgb(122, 164, 243);
     height: 100%;
     margin: 0;
@@ -113,7 +114,8 @@ input[type=text] {
         border-radius: 20px;
         text-align: center;
         border: 3px solid rgb(122, 205, 243);
-        background-color: white;
+        background-color: rgb(97, 187, 164);
+        opacity: 0.7;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s; /* All other browsers */
         cursor: pointer;
