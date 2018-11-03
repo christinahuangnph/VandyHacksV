@@ -1,7 +1,13 @@
 /*Stylesheets for Solid Ground*/
 
+html {
+    height: 100%;
+}
+
 body {
     background-color: rgb(122, 164, 243);
+    height: 100%;
+    margin: 0;
 }
 
 /* Modal Style Rules */
@@ -99,7 +105,7 @@ input[type=text] {
 }
         /* Button Style Rules */
     button {
-        border-radius: 10px;
+        border-radius: 20px;
         text-align: center;
         border: 3px solid rgb(122, 205, 243);
         background-color: white;
@@ -108,25 +114,28 @@ input[type=text] {
         cursor: pointer;
     }
 
-    #table-button {
-        width:60%; 
-        margin-left:20%; 
-        margin-right:20%;
+    #button-table {
+        margin: auto;
     } 
 
     #center-table {
-        width:60%; 
-        margin-left:20%; 
-        margin-right:20%;
+      display: flex;
+      height: 100%;
     }
 
-    tr {
-        height: 50px;
-        text-align: center;
+    .table-contents {
+        display: flex;
+        margin: auto;
+        flex-direction: column;
+    }
+
+    .table-row {
+        display: flex;
+        width: 420px;
     }
 
     button:hover {
-    background-color: #4CAF50; /* Green */
+    background-color: rgb(32, 152, 173);
     color: white;
     }   
 
@@ -140,7 +149,7 @@ input[type=text] {
     .buttonMed {
         font-size: 20px;
         padding: 32px 16px;
-        max-width: 150px;
+        flex-grow: 1;
     }
 
     /* Button Style 3 - Small Button*/
@@ -149,4 +158,8 @@ input[type=text] {
         padding: 10px 20px;
         position:fixed;
         right:0%;
+    }
+
+    #small {
+        border-radius: 10px;
     }
