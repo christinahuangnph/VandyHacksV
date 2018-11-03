@@ -1,0 +1,136 @@
+/*Stylesheets for Solid Ground*/
+
+body {
+    background-color: rgb(122, 164, 243);
+}
+
+/* Modal Style Rules */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+.container {
+    padding: 30px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    border: 2px;
+    border-color:#4CAF50;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 2px solid green;
+    border-radius: 10px;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Submit Button */
+#submit-btn {
+    font-size: 25px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
+        /* Button Style Rules */
+    button {
+        border-radius: 10px;
+        text-align: center;
+        border: 3px solid #4CAF50;
+        background-color: white;
+        -webkit-transition-duration: 0.4s; /* Safari */
+        transition-duration: 0.4s; /* All other browsers */
+        cursor: pointer;
+    }
+
+    #table-button {
+        width:60%; 
+        margin-left:20%; 
+        margin-right:20%;
+    } 
+
+    tr {
+        height: 50px;
+        text-align: center;
+    }
+
+    button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    }   
+
+    /* Button Style 1 - Large Button*/
+    .buttonBig {
+        font-size: 100px;
+        padding: 72px 64px;
+    }
+
+    /* Button Style 2 - Medium Buttons*/
+    .buttonMed {
+        font-size: 20px;
+        padding: 32px 16px;
+        max-width: 150px;
+    }
+
+    /* Button Style 3 - Small Button*/
+    .buttonSm {
+        font-size: 10px;
+        padding: 10px 20px;
+        position:fixed;
+        right:0%;
+    }

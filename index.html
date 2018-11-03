@@ -15,7 +15,7 @@
 }
 
 .container {
-    padding: 16px;
+    padding: 30px;
 }
 
 input[type=text] {
@@ -47,11 +47,19 @@ input[type=text] {
 .modal-content {
     background-color: #fefefe;
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    border: 2px solid green;
+    border-radius: 10px;
     width: 80%; /* Could be more or less, depending on screen size */
 }
 
-/* The Close Button (x) */
+/* Submit Button */
+#submit-btn {
+    font-size: 25px;
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Close Button (x) */
 .close {
     position: absolute;
     right: 25px;
@@ -201,7 +209,7 @@ input[type=text] {
                         <input type="text" placeholder="Enter A Phone Number" name="phnum" required>
                 </div>  
 
-            <button type="submit">Submit</button>
+            <button type="submit" id="submit-btn">Submit</button>
 
         </form>
         
