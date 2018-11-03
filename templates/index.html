@@ -2,12 +2,17 @@
 <html>
 
 <head>
+
     {% load static %}
     <meta charset="UTF-8">
+
     <title>Solid Ground</title>
 
     <link rel="stylesheet" type="text/css" href="{% static "styles.css" %}" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://unpkg.com/react/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone"></script>
 </head>
 
 <body>
@@ -120,6 +125,60 @@
         /* End Audio Playback */
 
     </script>
+
+<div id="app"></div>
+<script type="text/babel">
+    function circleWithText(text, bgColor, scale) {
+        let circleStyle = {
+            width: 200,
+            height: 200,
+            backgroundColor: bgColor,
+            borderRadius: '50%',
+            display: 'flex',
+            transform: 'scale(' + scale + ')',
+            transition: 'background-color 0.5s'
+        };
+
+        let textStyle = {
+            margin: 'auto',
+            color: 'white',
+            fontFamily: 'sans-serif',
+            fontSize: '30px'
+        };
+
+        return <div style={circleStyle}>
+                <div style={textStyle}>{text}</div>
+            </div>;
+    }
+
+    function render(root) {
+        ReactDOM.render(root, document.getElementById("app"));
+    }
+
+   
+    
+    let frameCount = 0;
+    function startAnimationLoop(scale) {
+        let dScale = 0.005 * Math.sin(frameCount/80);
+        let nextFrame = () => window.requestAnimationFrame(() => startAnimationLoop(scale + dScale));
+
+        if (Math.abs(dScale) < 1e-4) {
+            setTimeout(nextFrame, 300);
+            render(circleWithText('', 'rgb(102, 205, 170)', scale));
+        } else {
+            if (dScale > 0) {
+                render(circleWithText('Breathe In', 'rgb(102, 205, 170)', scale));
+            } else { 
+                render(circleWithText('Breathe Out', 'rgb(176, 196, 222)', scale))
+            }
+            nextFrame();
+        }
+
+        frameCount += 1;
+    }
+
+    startAnimationLoop(1);
+</script>
 
 </body>
 
