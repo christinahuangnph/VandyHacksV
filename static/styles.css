@@ -5,9 +5,14 @@ html {
 }
 
 body {
+    background-image:url("background.gif");
+    background-size:100%;
     background-color: rgb(122, 164, 243);
     height: 100%;
     margin: 0;
+}
+#bg {
+    opacity: 0.5;
 }
 
 /* Modal Style Rules */
