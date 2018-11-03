@@ -7,6 +7,81 @@
 
     <style>
 
+/* Modal Style Rules */
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    position: relative;
+}
+
+.container {
+    padding: 16px;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+    border: 2px;
+    border-color:#4CAF50;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+    position: absolute;
+    right: 25px;
+    top: 0;
+    color: #000;
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {-webkit-transform: scale(0)} 
+    to {-webkit-transform: scale(1)}
+}
+    
+@keyframes animatezoom {
+    from {transform: scale(0)} 
+    to {transform: scale(1)}
+}
         /* Button Style Rules */
     button {
         border-radius: 10px;
@@ -57,16 +132,30 @@
 
   </style>
 
-    <script></script>
+    <script>
+
+    //Display Modal
+    var modal = document.getElementById('ecForm');
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }    
+
+    </script>
 
 </head>
 
 <body>
     <!--Change logo image-->
     <img src="placeholder.jpg" alt="Solid Ground" width="15" height="15">
+    <a href="/">
+            <img src="logo-placeholder.png" alt="Logo" width="70" height="20">
+    </a>
 
     <!--Emergency Contact Set Up-->
-    <button class="buttonSm" onclick="ecform()">Set Up</button>
+    <button class="buttonSm" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set Up</button>
 
     <!--Buttons-->
     <table id="button-table">
@@ -95,18 +184,27 @@
     <!--End Buttons-->
 
     <!--Emergency Contact Form-->
-    <div style="display:none">
+    <div style="display:none" id="ecForm" class="modal">
         <!--send data somewhere-->
-        <form action="" method="post">
-            Emergency Contact Name: <br>
-            <input type="text" name="name"><br>
+        <form action="" method="post" class="modal-content animate">
+                <div class="imgcontainer">
+                        <span onclick="document.getElementById('ecForm').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
 
-            Phone Number: <br>
-            <input type="text"> <br>
+                <div class="container">
+                        <label for="emcontname"><b>Emergency Contact Name:</b></label>
+                        <input type="text" placeholder="Enter A Contact Name" name="cname" required>
+                </div>    
+                
+                <div class="container">
+                        <label for="phnum"><b>Phone Number:</b></label>
+                        <input type="text" placeholder="Enter A Phone Number" name="phnum" required>
+                </div>  
 
-            <input type="submit" value="Submit">
+            <button type="submit">Submit</button>
 
         </form>
+        
     </div>
     <!--End Emergency Contact Form-->
 </body>
