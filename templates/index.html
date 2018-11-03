@@ -49,7 +49,7 @@
         <div class="table-contents">
             <div class="table-row">
                 <!--Add action-->
-                <button class="buttonBig" id="anchor" onclick="playFile()">START</button>
+                <button class="buttonBig" id="anchor" onclick="startExercise()">START</button>
             </div>
             <!--Separation-->
             <div><p><br></p></div>
@@ -97,25 +97,29 @@
             }
         }
         /* End Contact Form */
-
-        /* Audio Playback */
-        //Audio Controls
-        function playFile() {
-            //choose a sequence to play
-            let x = document.getElementById("testing");
-            if (x.paused) {
-                x.play();
-            } else {
-                x.pause();
-            }
-
+        function startExercise() {
+            playFile("testing")
             fetch('/',
                 {method:'post',
                 headers: {
                     "X-CSRFToken": Cookies.get('csrftoken'),
                     "Accept": "application/json",
                     "Content-Type": "application/json"
-                },}).then(res => console.log(res))
+                },}).then(res => res.json())
+                .then(parsed => playFile(parsed['exercise']))
+        }
+
+        /* Audio Playback */
+        //Audio Controls
+        function playFile(file_path) {
+            //choose a sequence to play
+            let x = document.getElementById(file_path);
+            if (x.paused) {
+                x.play();
+            } else {
+                x.pause();
+            }
+
         }
         /* End Audio Playback */
 
