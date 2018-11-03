@@ -9,10 +9,14 @@ AUDIO_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file
 commands = ['sensory_counting', 'mantra', 'object', 'breathing']
 
 
-
-
 def prompt_user():
     return os.path.join(AUDIO_PATH, 'prompt.mp3')
+
+def launch_exercise():
+    user_in = accept_audio()
+    command = process_speech(user_in)
+    path = exercise_path(command)
+    return path
 
 
 # reads audio from mic
@@ -56,10 +60,6 @@ def process_speech(transcript):
 
 def exercise_path(command):
     if command == '': # random exercise
-        index = random.randint(len(commands)-1)
+        index = random.randint(0, len(commands)-1)
         command = commands[index]
-    os.path.join(AUDIO_PATH, command +'.mp3')
-
-#res = speech_to_text(os.path.join(AUDIO_PATH, 'testing.wav'))
-res = process_speech('object')
-print(res)
+    return os.path.join(AUDIO_PATH, command +'.mp3')
