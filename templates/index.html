@@ -60,7 +60,7 @@
 
     <div id="Set Up" class="tabcontent" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">
         <!--Emergency Contact-->
-        <div style="display:none" id="ecForm" class="modal">
+        <div style="display:none" id='ecForm' class="modal">
             <!--send data somewhere-->
             <form name="contactForm" action="" method="post" class="modal-content animate" onsubmit="return validateForm()">
                 {% csrf_token %}
@@ -85,8 +85,6 @@
         </div>
         <!--End Emergency Contact-->
     </div>
-
-
 
 
     <script>

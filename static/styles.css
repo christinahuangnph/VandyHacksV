@@ -170,3 +170,8 @@ input[type=text] {
     #small {
         border-radius: 10px;
     }
+
+    #app {
+        display: flex;
+        margin: auto;
+    }
