@@ -42,9 +42,9 @@ input[type=text] {
 
 /* Modal Content/Box */
 .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(122, 164, 243);
     margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 2px solid green;
+    border: 2px solid rgb(122, 205, 243);
     border-radius: 10px;
     width: 80%; /* Could be more or less, depending on screen size */
 }
@@ -54,6 +54,16 @@ input[type=text] {
     font-size: 25px;
     width: 100%;
     border-radius: 5px;
+}
+
+#response {
+    text-align: center;
+    background-color: rgb(72, 192, 248);
+    border: 2px rgb(122, 205, 243);
+    border-radius: 5px;
+    width: 20%;
+    margin:auto;
+    top:0;
 }
 
 /* Close Button (x) */
@@ -91,7 +101,7 @@ input[type=text] {
     button {
         border-radius: 10px;
         text-align: center;
-        border: 3px solid #4CAF50;
+        border: 3px solid rgb(122, 205, 243);
         background-color: white;
         -webkit-transition-duration: 0.4s; /* Safari */
         transition-duration: 0.4s; /* All other browsers */
@@ -103,6 +113,12 @@ input[type=text] {
         margin-left:20%; 
         margin-right:20%;
     } 
+
+    #center-table {
+        width:60%; 
+        margin-left:20%; 
+        margin-right:20%;
+    }
 
     tr {
         height: 50px;
