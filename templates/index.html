@@ -2,7 +2,6 @@
 <html>
 
 <head>
-
     {% load static %}
     <meta charset="UTF-8">
 
@@ -26,36 +25,25 @@
     </div>
 
     <div id="Home" class="tabcontent">
-
         <!--Buttons-->
         <div id="center-table">
             <div class="table-contents">
                 <div class="table-row">
                     <!--Add action-->
-                    <button class="buttonBig" id="anchor" onclick="playFile(); hide()">START</button>
+                    <button class="buttonBig" id="anchor" onclick="startExercise()">START</button>
                 </div>
                 <!--Separation-->
-                <div>
-                    <p><br></p>
-                </div>
+                <div><p><br></p></div>
                 <div class="table-row">
                     <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
                     <div style="width: 40px"></div>
                     <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
                 </div>
             </div>
-        </div>
-        <!--End Buttons-->
-
-        <!--Audio-->
-        <audio id="testing">
-            <source src="/static/navigation/audiofiles/testing.wav" type="audio/wav">
-        </audio>
-        <!--End Audio-->
     </div>
 
     <div id="Music" class="tabcontent">
-
+         <iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DWUZ5bk6qqDSy" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 
     <div id="Set Up" class="tabcontent" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">
@@ -82,7 +70,9 @@
                 <button type="submit" id="submit-btn">Submit</button>
 
             </form>
+
         </div>
+
         <!--End Emergency Contact-->
     </div>
 
@@ -124,6 +114,31 @@
         }
         /* End Contact Form */
 
+        function startExercise() {
+            playFile("/static/navigation/audiofiles/testing.wav");
+
+            fetch('/',
+                {method:'post',
+                headers: {
+                    "X-CSRFToken": Cookies.get('csrftoken'),
+                    "Accept": "application/json",
+                    "Content-Type": "application/json"
+                },}).then(res => res.json())
+                .then(parsed => playFile(parsed['exercise']))
+        }
+
+        /* Audio Playback */
+        //Audio Controls
+        function playFile(file_path) {
+            //choose a sequence to play
+            let x = document.createElement("Audio");
+            x.innerHTML =
+                '<source src="' + file_path + '" type="audio/mp3">';
+            console.log(x);
+            x.play();
+        }
+
+
         /* Hide Start Button */
         function hide() {
             let x = document.getElementById("anchor");
@@ -131,30 +146,6 @@
             x.style.pointerEvents = "none";
         }
         /* End Hide Start Button */
-
-        /* Audio Playback */
-        //Audio Controls
-        function playFile() {
-            //choose a sequence to play
-            let x = document.getElementById("testing");
-            if (x.paused) {
-                x.play();
-                startAnimationLoop(1);
-            } else {
-                x.pause();
-            }
-
-            fetch('/',
-                {
-                    method: 'post',
-                    headers: {
-                        "X-CSRFToken": Cookies.get('csrftoken'),
-                        "Accept": "application/json",
-                        "Content-Type": "application/json"
-                    },
-                }).then(res => console.log(res))
-        }
-        /* End Audio Playback */
 
     </script>
 
