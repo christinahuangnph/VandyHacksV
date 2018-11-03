@@ -17,12 +17,12 @@
 
 <body>
     <!--Change logo image-->
-    <img src="/static/placeholder.jpg" alt="Solid Ground" width="15" height="15">
+    <img src="/static/chaplain.jpg" alt="Solid Ground" width="30" height="15">
 
     <div class="tab">
-        <button class="tablinks" onmouseover="openCity(event, 'Home')">Home</button>
-        <button class="tablinks" onmouseover="openCity(event, 'Music')">Music</button>
-        <button class="tablinks" onmouseover="openCity(event, 'Set Up')">Set Up</button>
+        <button class="tablinks" onclick="openPage('Home')">Home</button>
+        <button class="tablinks" onclick="openPage('Music')">Music</button>
+        <button class="tablinks">Set Up</button>
     </div>
 
     <div id="Home" class="tabcontent">
@@ -88,6 +88,13 @@
 
 
     <script>
+
+        /* Nav Bar */
+        //Return to homepage
+        function openPage() {
+            window.location.href="../index.html";
+        }
+        /* End of Nav Bar */
 
         /* Contact Form */
         //Display Modal
