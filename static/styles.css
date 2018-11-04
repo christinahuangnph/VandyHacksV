@@ -164,14 +164,14 @@ input[type=text] {
         margin: 0 30vw;
         font-size: 120px;
         padding: 3%;
-        margin-bottom: 1em;
-        margin-top: 10px;
+        margin-bottom: 50px;
+        margin-top: 80px;
         font-family: "AmaticB";
     }
 
     /* Button Style 2 - Medium Buttons*/
     .buttonMed {
-        font-size: 20px;
+        font-size: 28px;
         padding: 32px 18px;
         flex-grow: 1;
         font-family: "AmaticB";
@@ -200,8 +200,7 @@ input[type=text] {
         position: absolute;
         top: 50%;
         left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        transform: translate(-50%, calc(-50% - 90px));
     }
 
     #Music {
@@ -217,3 +216,22 @@ input[type=text] {
         display: flex;
         align-items: center;
     }
+
+/* Navbar */
+.tab {
+    display: flex;
+    width: 100%;
+    background: white;
+}
+
+.tab-contents {
+    margin: 0 auto;
+    display: flex;
+}
+
+.tablinks {
+    line-height: 60px;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 20px;
+}
