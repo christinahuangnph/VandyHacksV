@@ -148,6 +148,8 @@ input[type=text] {
 
     /* Button Style 1 - Large Button*/
     .buttonBig {
+        width: 40vw;
+        margin: 0 30vw;
         font-size: 100px;
         padding: 72px 64px;
         margin-bottom: 1em;
@@ -157,7 +159,7 @@ input[type=text] {
     /* Button Style 2 - Medium Buttons*/
     .buttonMed {
         font-size: 20px;
-        padding: 32px 16px;
+        padding: 32px 18px;
         flex-grow: 1;
     }
 
@@ -167,6 +169,11 @@ input[type=text] {
         padding: 10px 20px;
         position:fixed;
         right:0%;
+    }
+
+    #call-buttons {
+        width: 40vw;
+        margin: 0 30vw;
     }
 
     #small {
