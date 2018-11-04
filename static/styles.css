@@ -150,6 +150,8 @@ input[type=text] {
     .buttonBig {
         font-size: 100px;
         padding: 72px 64px;
+        margin-bottom: 1em;
+        margin-top: 10px;
     }
 
     /* Button Style 2 - Medium Buttons*/

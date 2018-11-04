@@ -28,16 +28,12 @@
         <!--Buttons-->
         <div id="center-table">
             <div class="table-contents">
+                <!--Add action-->
+                <button class="buttonBig" id="anchor" onclick="startExercise(); hide()">START</button>
                 <div class="table-row">
-                    <!--Add action-->
-                    <button class="buttonBig" id="anchor" onclick="startExercise(); hide()">START</button>
-                </div>
-                <!--Separation-->
-                <div><p><br></p></div>
-                <div class="table-row">
-                    <button class="buttonMed" id="emcon" onclick="callEmergencyContact()">Call Contact</button>
+                    <button class="buttonMed" id="emcon" onclick="window.open('tel:' + phone())">Call Contact</button>
                     <div style="width: 40px"></div>
-                    <button class="buttonMed" id="hot" onclick="callHotline()">Call Hotline</button>
+                    <button class="buttonMed" id="hot" onclick="window.open('tel:18009506264')">Call Hotline</button>
                 </div>
             </div>
     </div>
@@ -112,12 +108,13 @@
                 return true;
             }
         }
+
         /* End Contact Form */
 
         function startExercise() {
             playFile("/static/navigation/audiofiles/start.mp3");
-            setTimeout(function() {
-                fetch('/',
+            setTimeout(
+                (fetch('/',
                     {method:'post',
                     headers: {
                         "X-CSRFToken": Cookies.get('csrftoken'),
@@ -126,9 +123,8 @@
                     },}).then(res => res.json())
                     .then(parsed => {
                         start_visuals(parsed['exercise'][1]);
-                        playFile(parsed['exercise'][0]);})},
-                9)
-            console.log("done");
+                        playFile(parsed['exercise'][0]);})),
+                8)
 
         }
 
