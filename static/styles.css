@@ -181,4 +181,8 @@ input[type=text] {
         margin: auto;
         top: 0%;
     }
-    
+
+    #logo {
+        display: flex;
+        width: 100%;
+    }
