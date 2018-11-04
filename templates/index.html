@@ -12,6 +12,7 @@
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone"></script>
+
 </head>
 
 <body>
@@ -141,7 +142,7 @@
             let x = document.createElement("Audio");
             x.innerHTML =
                 '<source src="' + file_path + '" type="audio/mp3">';
-            x.play().then(res => setTimeout(cb, x.duration * 1000));
+            x.play().then(res => setTimeout(cb, (x.duration - 1.5) * 1000));
         }
 
 
