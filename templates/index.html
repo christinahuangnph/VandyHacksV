@@ -115,18 +115,19 @@
         /* End Contact Form */
 
         function startExercise() {
-            playFile("/static/navigation/audiofiles/testing.wav");
-
-            fetch('/',
-                {method:'post',
-                headers: {
-                    "X-CSRFToken": Cookies.get('csrftoken'),
-                    "Accept": "application/json",
-                    "Content-Type": "application/json"
-                },}).then(res => res.json())
-                .then(parsed => {
-                    start_visuals(parsed['exercise'][1]);
-                    playFile(parsed['exercise'][0]);})
+            playFile("/static/navigation/audiofiles/start.mp3");
+            setTimeout(
+                (fetch('/',
+                    {method:'post',
+                    headers: {
+                        "X-CSRFToken": Cookies.get('csrftoken'),
+                        "Accept": "application/json",
+                        "Content-Type": "application/json"
+                    },}).then(res => res.json())
+                    .then(parsed => {
+                        start_visuals(parsed['exercise'][1]);
+                        playFile(parsed['exercise'][0]);})),
+                8)
 
         }
 
