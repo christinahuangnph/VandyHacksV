@@ -172,17 +172,21 @@ input[type=text] {
     }
 
     #app {
-        display: flex;
-        align-items: center;
-        margin: auto;
-        width: 100%; /* Full width */
-        height: 100%; /* Full height */
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     #Music {
-        display: flex;
-        margin: auto;
-        align-items: center;
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     #logo {
