@@ -124,7 +124,16 @@
                     "Accept": "application/json",
                     "Content-Type": "application/json"
                 },}).then(res => res.json())
-                .then(parsed => playFile(parsed['exercise']))
+                .then(parsed => {
+                    start_visuals(parsed['exercise'][1]);
+                    playFile(parsed['exercise'][0]);})
+
+        }
+
+        function start_visuals(command) {
+            if (command == 'breathing') {
+                startAnimationLoop(1);
+            }
         }
 
         /* Audio Playback */
@@ -200,7 +209,7 @@
         frameCount += 1;
     }
 
-    startAnimationLoop(1);
+    {#startAnimationLoop(1);#}
 </script>
 
 </body>
