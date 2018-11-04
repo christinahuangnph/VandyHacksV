@@ -15,6 +15,4 @@ def index(request):
 
 def audio(request):
     if (request.method == 'POST'):  # form submission
-        form = upload.UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
             return upload.handle_uploaded_file(request.FILES['file'])

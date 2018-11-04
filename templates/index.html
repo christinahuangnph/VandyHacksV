@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}" />
     <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script src="https://cdn.WebRTC-Experiment.com/MediaStreamRecorder.js"></script>
     <script src="https://unpkg.com/react/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone"></script>
@@ -30,7 +31,7 @@
         <div id="center-table">
             <div class="table-contents">
                 <!--Add action-->
-                <button class="buttonBig" id="anchor" onclick="startExercise(); hide()">S T A R T</button>
+                <button class="buttonBig" id="anchor" onclick="startExerciseBrowserRecord(); hide()">S T A R T</button>
                 <div id = "call-buttons" class="table-row">
                     <button class="buttonMed" id="emcon" onclick="window.open('tel:' + phone())">Call Contact</button>
                     <div style="width: 40px"></div>
@@ -141,14 +142,52 @@
 
         /* Audio Playback */
         //Audio Controls
-        function playFile(file_path, cb) {
+        function playFile(file_path, cb, offset = -1.5) {
             //choose a sequence to play
             let x = document.createElement("Audio");
             x.innerHTML =
                 '<source src="' + file_path + '" type="audio/mp3">';
-            x.play().then(res => setTimeout(cb, (x.duration - 1.5) * 1000));
+            x.play().then(res => setTimeout(cb, (x.duration + offset) * 1000));
         }
 
+        function startExerciseBrowserRecord() {
+            playFile("/static/navigation/audiofiles/start.mp3", recordAudio, 0);
+        }
+
+        function recordAudio() {
+            let mediaConstraints = {
+                audio: true
+            };
+
+            navigator.getUserMedia(mediaConstraints, onMediaSuccess, onMediaError);
+
+            function onMediaSuccess(stream) {
+                let mediaRecorder = new MediaStreamRecorder(stream);
+                mediaRecorder.mimeType = 'audio/wav'; // check this line for audio/wav
+                mediaRecorder.ondataavailable = function (blob) {
+                    mediaRecorder.stop();
+                    const formData = new FormData();
+                    formData.append('file', blob);
+                    fetch('/audio', {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            "X-CSRFToken": Cookies.get('csrftoken'),
+                        }
+                    })
+                        .then(r => r.json())
+                        .then(parsed => {
+                            start_visuals(parsed['exercise'][1]);
+                            playFile(parsed['exercise'][0]);
+                        })
+                };
+                mediaRecorder.start(3000);
+            }
+
+            function onMediaError() {
+
+            }
+        }
 
         /* Hide Start Button */
         function hide() {

@@ -35,14 +35,13 @@ def accept_audio():
 # reads audio from file
 def speech_to_text(audio_input):
     rec = sr.Recognizer()  # Speech Recognizer
-
     af = sr.AudioFile(audio_input) # Audio File
     try:
         with af as source:
             audio = rec.record(source) # Audio Data
             return rec.recognize_google(audio)
     except sr.UnknownValueError:
-        return ''
+        return 'unknown value'
 
 
 def process_speech(transcript):
@@ -53,6 +52,7 @@ def process_speech(transcript):
     if find_near_matches('focus', transcript, max_l_dist=2):
         return 'object'
     # pick random command
+    print("we're going random")
     index = random.randint(0, len(commands) - 1)
     return commands[index]
 
