@@ -20,8 +20,8 @@
 
     <div class="tab">
         <button class="tablinks" onclick="openPage('Home')">Home</button>
-        <button class="tablinks" onclick="openPage('Music')">Music</button>
-        <button class="tablinks">Set Up</button>
+        <button class="tablinks" onclick="document.getElementById('Music').style.display='block'" style="width:auto;">Music</button>
+        <button class="tablinks" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set Up</button>
     </div>
 
     <div id="Home" class="tabcontent">
@@ -42,11 +42,11 @@
             </div>
     </div>
 
-    <div id="Music" class="tabcontent">
+    <div id="Music" class="tabcontent" style="display: none;">
          <iframe src="https://open.spotify.com/embed/user/spotify/playlist/37i9dQZF1DWUZ5bk6qqDSy" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
     </div>
 
-    <div id="Set Up" class="tabcontent" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">
+    <div id="Set Up" class="tabcontent">
         <!--Emergency Contact-->
         <div style="display:none" id='ecForm' class="modal">
             <!--send data somewhere-->
