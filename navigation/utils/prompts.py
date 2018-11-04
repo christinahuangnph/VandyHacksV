@@ -38,6 +38,7 @@ def speech_to_text(audio_input):
     af = sr.AudioFile(audio_input) # Audio File
     try:
         with af as source:
+            rec.adjust_for_ambient_noise(source)
             audio = rec.record(source) # Audio Data
             return rec.recognize_google(audio)
     except sr.UnknownValueError:
