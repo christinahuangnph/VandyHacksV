@@ -7,9 +7,6 @@ from .utils import upload
 
 @ensure_csrf_cookie
 def index(request):
-    if(request.method == 'POST'): # form submission
-        return JsonResponse({'exercise': prompts.launch_exercise()})
-
     return render(request, 'index.html')
 
 

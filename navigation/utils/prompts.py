@@ -11,26 +11,6 @@ commands = ['mantra', 'object', 'breathing']
 def prompt_user():
     return AUDIO_PATH + '/prompt.mp3'
 
-def launch_exercise():
-    user_in = accept_audio()
-    command = process_speech(user_in)
-    path = exercise_path(command)
-    return (path, command)
-
-
-# reads audio from mic
-def accept_audio():
-    mic = sr.Microphone()
-    rec = sr. Recognizer()
-
-    try:
-        with mic as source:
-            rec.adjust_for_ambient_noise(source)
-            audio = rec.listen(source)
-        return rec.recognize_google(audio)
-    except sr.UnknownValueError:
-        return ''
-
 
 # reads audio from file
 def speech_to_text(audio_input):
