@@ -18,12 +18,13 @@
 
 <body>
     <!--Change logo image-->
-    <img id= "logo" src="/static/chaplain.png" alt="Solid Ground" width = "125" height = "60">
 
     <div class="tab">
-        <button class="tablinks" onclick="openPage('Home')">Home</button>
-        <button class="tablinks" onclick="document.getElementById('Music').style.display='block'" style="width:auto;">Music</button>
-        <button class="tablinks" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set Up</button>
+        <div class="tab-contents">
+        <div class="tablinks" onclick="document.getElementById('Music').style.display='block'" style="width:auto;">Music</div>
+        <img style="cursor: pointer" id= "logo" src="/static/chaplain.png" alt="Solid Ground" width = "125" height = "60" onclick="openPage()">
+        <div class="tablinks" onclick="document.getElementById('ecForm').style.display='block'" style="width:auto;">Set Up</div>
+    </div>
     </div>
 
     <div id="Home" class="tabcontent">
