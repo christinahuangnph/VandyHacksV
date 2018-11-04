@@ -9,7 +9,6 @@ from .utils import prompts
 def index(request):
 
     if(request.method == 'POST'): # form submission
-        return JsonResponse({'prompt':prompts.prompt_user(),
-                             'exercise': prompts.launch_exercise()})
+        return JsonResponse({'exercise': prompts.launch_exercise()})
 
     return render(request, 'index.html')
