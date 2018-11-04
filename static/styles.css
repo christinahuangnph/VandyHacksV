@@ -175,3 +175,10 @@ input[type=text] {
         display: flex;
         margin: auto;
     }
+
+    #Music {
+        display: flex;
+        margin: auto;
+        top: 0%;
+    }
+    
