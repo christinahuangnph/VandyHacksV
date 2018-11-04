@@ -133,9 +133,9 @@
             if (command == 'breathing') {
                 startAnimationLoop(1);
             } else if (command == 'mantra') {
-                mantraAnimation();
-            } else if (command == 'focus') {
-                focusAnimation();
+                reenableButton("MANTRA");
+            } else if (command == 'object') {
+                reenableButton("FOCUS");
             }
         }
 
@@ -211,16 +211,10 @@
         frameCount += 1;
     }
 
-    function mantraAnimation() {
+    function reenableButton(text) {
         let x = document.getElementById("anchor");
         x.style.opacity = ".7";
-        x.innerText = "MANTRA"
-    }
-
-    function focusAnimation() {
-        let x = document.getElementById("anchor");
-        x.style.opacity = ".7";
-        x.innerText = "FOCUS"
+        x.innerText = text;
     }
 
 </script>
