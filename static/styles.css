@@ -173,16 +173,17 @@ input[type=text] {
 
     #app {
         display: flex;
+        align-items: center;
         margin: auto;
     }
 
     #Music {
         display: flex;
         margin: auto;
-        top: 0%;
+        align-items: center;
     }
 
     #logo {
         display: flex;
-        width: 100%;
+        align-items: center;
     }
