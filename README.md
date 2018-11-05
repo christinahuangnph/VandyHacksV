@@ -51,8 +51,8 @@ Prompt 3: Breathing Exercises
 “Continue or click the screen to stop”
 
 # Troubleshooting
-NPL isn't working
-Minimize background noise
-Try a different voice
+If NLP isn't working:
+Minimize background noise, 
+Try a different voice, 
 Wait 2 seconds before speaking
 
